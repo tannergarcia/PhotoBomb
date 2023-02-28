@@ -17,7 +17,7 @@ export interface DialogData {
 
 export class DecodeComponent implements OnInit{
 
-  form!: FormGroup;
+  
   test: unknown;
   
   

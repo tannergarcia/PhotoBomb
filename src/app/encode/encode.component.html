@@ -1,1 +1,14 @@
-<p>encode works!</p>
+<mat-dialog-content>
+  
+    <mat-form-field>
+        <input matInput
+            placeholder="Type here"
+        >
+    </mat-form-field>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button class="mat-raised-button"(click)="close()">Close</button>
+    <button mat-raised-button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

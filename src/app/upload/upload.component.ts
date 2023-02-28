@@ -1,7 +1,8 @@
 import { Component, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DecodeComponent } from '../decode/decode.component';
+import { EncodeComponent } from '../encode/encode.component';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { DecodeComponent } from '../decode/decode.component';
 })
 export class UploadComponent {
   fileName = '';
-  ipAddy = '100.64.5.189';
+  //ipAddy = '100.64.5.189';
+  ipAddy = 'localhost'
   formData = new FormData();
   hide = true;
   message!: string;
@@ -34,6 +36,13 @@ export class UploadComponent {
     this.dialog.open(DecodeComponent, dialogConfig);
   }
 
+  openEncode() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+
+    this.dialog.open(EncodeComponent, dialogConfig);
+  }
+
   getDecoded(){
     return this.httpClient.get('http://' + this.ipAddy +':8080/upload/encode');
   }
@@ -48,14 +57,17 @@ export class UploadComponent {
           this.fileName = file.name;        
 
           this.formData.append("uploadfile", file);
-          this.formData.append("imagetext", "Hello");
+          this.formData.append("imagetext", "imageText");
           
       }
 
   }
 
   onUpload(){
-    const upload$ = this.httpClient.post('http://' + this.ipAddy +':8080/upload/encode', this.formData);       
+    const upload$ = this.httpClient.post('http://' + this.ipAddy +':4200/upload/encode', this.formData, //8080
+    {
+      withCredentials: true
+    });       
     upload$.subscribe();
     console.log("Sent");
   }

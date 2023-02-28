@@ -14,13 +14,14 @@ import { ImagebtnsComponent } from './imagebtns/imagebtns.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { TextboxComponent } from './textbox/textbox.component';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DecodeComponent } from './decode/decode.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EncodeComponent } from './encode/encode.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import { EncodeComponent } from './encode/encode.component';
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    HttpClientTestingModule,
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent],
   entryComponents: [DecodeComponent]
 })
