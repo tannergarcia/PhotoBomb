@@ -1,0 +1,67 @@
+﻿<style>
+    .carder {
+        position: flex;
+        background-color:black;
+    }
+
+    .text{
+        color:white; 
+    }
+
+    form i {
+        margin-left: 2px;
+        cursor: pointer;
+    }
+
+</style>
+
+<div id="carder">
+<div class="card" style="color:black; width: 400px; left: 300px;">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && current.firstName.errors }" />
+                <div *ngIf="submitted && current.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="current.firstName.errors.required">First Name is needed</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && current.lastName.errors }" />
+                <div *ngIf="submitted && current.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="current.lastName.errors.required">Last Name is needed</div>
+                </div>
+            </div>
+
+            
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && current.username.errors }" />
+                <div *ngIf="submitted && current.username.errors" class="invalid-feedback">
+                    <div *ngIf="current.username.errors.required">Username is invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && current.password.errors }" />
+                
+
+                <div *ngIf="submitted && current.password.errors" class="invalid-feedback">
+                    <div *ngIf="current.password.errors.required">Password is invalid</div>
+                    <div *ngIf="current.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div>
+                <button [disabled]="loading" class="btn btn-primary" id="register_button">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                    Register
+                </button>
+                <a routerLink="../login" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+

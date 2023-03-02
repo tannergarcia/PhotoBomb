@@ -1,0 +1,79 @@
+﻿<style>
+    .title{
+        font-size: 40px;
+        color:white; 
+        left:80; 
+        top:20;
+    }
+
+    .buttons{
+        position: relative; 
+        left:1150px; 
+        top:5px;
+        font-size: 25px;
+    }
+
+    html {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        margin: 0px;
+        min-height: 100%;
+        width: 100%;
+    }
+
+    .containerbox{
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+</style>
+
+<!DOCTYPE html>
+<html>
+    <body style="background-color:rgb(33,37,41);">
+<nav class="navbar navbar-expand navbar-dark bg-secondary px-4" *ngIf="user">
+    <div class="navbar-nav">     
+            <div class="title">
+                <p>PhotoBomb</p>
+            </div>
+        <div class="buttons">
+            <ul class="nav navbar-nav navbar-expand navbar-right px-4">               
+                <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="home_button">Home</a>
+                <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active" id="userlist_button">UserList</a>
+                <button class="btn btn-link nav-item nav-link" (click)="logout()" id="logout_button">Logout</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="containerbox">
+<div class="app-container" [ngClass]="{ 'bg-dark': user }" style="color:white; ">
+    <div *ngIf="!user">
+        <nav class="navbar navbar-expand navbar-dark bg-secondary px-4">
+            <div class="navbar-nav">     
+                <div class="title">
+                    <p>PhotoBomb</p>
+                </div>
+            </div>    
+        </nav>
+    </div>
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+</div>
+
+<!-- TEXT -->
+
+    <!-- PLACEHOLDER -->
+    <p style="color:rgb(33,37,41); font-size: 700px; text-align: center;">---</p>
+    
+</body>
+</html>
+
+
+

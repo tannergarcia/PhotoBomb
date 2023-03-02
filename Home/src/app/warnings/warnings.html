@@ -1,0 +1,36 @@
+﻿<style>
+    .content{
+        font-size: 40px;
+        color:white; 
+        left:80; 
+        top:20;
+    }
+
+    .buttons{
+        position: relative; 
+        left:1150px; 
+        top:5px;
+        font-size: 25px;
+    }
+
+    html {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        margin: 0px;
+        min-height: 100%;
+        width: 100%;
+    }
+
+
+
+</style>
+
+
+<div *ngFor="let alert of alerts" class="{{checkClass(alert)}}">
+    <span [innerHTML]="alert.content"></span>
+    <button class="btn-close" (click)="hide_warn(alert)" formControlName="close_warn"></button>
+</div>

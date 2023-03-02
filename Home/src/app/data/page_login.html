@@ -1,0 +1,82 @@
+﻿<style>
+
+
+    body {
+        background-image: url('assets/Background.jpg');
+        background-repeat: no-repeat;
+        color: #cccccc;
+    }
+
+    form i {
+        margin-right: 0px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        color: black;
+        
+    }
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+
+<div class="card" style="color:black; width: 350px; left: 300px;">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend" style="width: 300px;">
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': accept && preset.username.errors }" />
+
+            </div>
+                <div *ngIf="accept && preset.username.errors" class="invalid-feedback">
+                    <div *ngIf="preset.username.errors.required">Username is invalid</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend" style="width: 255px; margin-bottom: 10px;">
+                        <input [type]="show ? 'text' : 'password'" name="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': accept && preset.password.errors }" />
+                    </div>
+                
+                <div class="input-group-append">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i
+                                    class="fa"
+                                    [ngClass]="{
+                                    'fa-eye-slash': !fieldTextType,
+                                    'fa-eye': fieldTextType
+                                    }"
+                                    (click)="toggleFieldTextType()"
+                                    formControlName="button"
+                                    ></i>
+                            </span>
+                        </div>
+                        </div>
+
+
+                <div *ngIf="accept && preset.password.errors" class="invalid-feedback">
+                    <div *ngIf="preset.password.errors.required">Password is invalid</div>
+                </div>
+            </div>
+            <div>
+                <button [disabled]="loading" class="btn btn-primary" id="login_button">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                    Login
+                </button>
+                <a routerLink="../register" class="btn btn-link" formControlName="register_button">Register</a>
+            </div>
+        
+    
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+﻿<h1>Users In Database</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%" style="color:white">Username</th>
+            <th style="width: 30%" style="color:white">First Name</th>
+            <th style="width: 30%" style="color:white">Last Name</th>
+            <th style="width: 10%" style="color:white"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userValue">
+            <td style="color:white">{{user.username}}</td>
+            <td style="color:white">{{user.firstName}}</td>
+            <td style="color:white">{{user.lastName}}</td>           
+            <td style="white-space: nowrap">
+                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting" id="delete_button">
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!user.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!userValue">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
