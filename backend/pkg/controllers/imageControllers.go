@@ -79,6 +79,7 @@ func ImageDecode(w http.ResponseWriter, r *http.Request) { // takes an image fro
 
 	//Only allow images
 	filetype := filepath.Ext(handler.Filename)
+	filetype = strings.ToLower(filetype)
 	if filetype != ".jpeg" && filetype != ".png" && filetype != ".jpg" {
 		//errNew = "The provided file format is not allowed. Please upload a JPEG,JPG or PNG image"
 		w.WriteHeader(http.StatusBadRequest)
